@@ -8,11 +8,14 @@
 
 #import "StarterViewController.h"
 
-@interface StarterViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface StarterViewController () <UITableViewDataSource, UITableViewDelegate, UIBarPositioningDelegate, UISearchBarDelegate>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UISearchDisplayController *searchDisplayController;
+@property (nonatomic, strong) UISearchBar *searchBar;
 @end
 
 @implementation StarterViewController
+@synthesize searchDisplayController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -21,6 +24,30 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(startSearch)];
+    
+    self.searchBar = [[UISearchBar alloc]init];
+    self.searchBar.delegate = self;
+    self.tableView.tableHeaderView = self.searchBar;
+    self.tableView.tableHeaderView.frame = CGRectZero;
+    self.searchBar.hidden = YES;
+
+    self.searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:self.searchBar contentsController:self];
+    self.searchDisplayController.searchResultsDataSource = self;
+    self.searchDisplayController.searchResultsDelegate = self;
+    
+}
+
+- (void)startSearch {
+    [self.searchDisplayController setActive:YES animated:YES];
+    self.tableView.tableHeaderView = self.searchBar;
+    self.searchBar.hidden = NO;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar {
+       self.searchBar.hidden = YES;
+        self.tableView.tableHeaderView = nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
