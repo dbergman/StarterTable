@@ -30,7 +30,6 @@
     self.searchBar = [[UISearchBar alloc]init];
     self.searchBar.delegate = self;
     self.tableView.tableHeaderView = self.searchBar;
-    self.tableView.tableHeaderView.frame = CGRectZero;
     self.searchBar.hidden = YES;
 
     self.searchDisplayController = [[UISearchDisplayController alloc]initWithSearchBar:self.searchBar contentsController:self];
