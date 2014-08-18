@@ -7,9 +7,11 @@
 //
 
 #import "StarterViewController.h"
+#import "PopUpViewController.h"
 
 @interface StarterViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) PopUpViewController *popVC;
 @end
 
 @implementation StarterViewController
@@ -21,7 +23,34 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(popUpViewAction)];
+    
+    [self setupPopUP];
 }
+
+- (void)setupPopUP {
+    self.popVC = [[PopUpViewController alloc] init];
+    self.popVC.view.backgroundColor = [UIColor purpleColor];
+    
+    self.popVC.view.frame = CGRectMake(0.0, self.view.frame.size.height, self.view.frame.size.width, 250);
+    
+    [self.view addSubview:self.popVC.view];
+}
+
+- (void)popUpViewAction {
+
+    [UIView animateWithDuration:0.3 delay:0.0 usingSpringWithDamping:.5 initialSpringVelocity:.9 options:UIViewAnimationOptionLayoutSubviews animations:^{
+            self.popVC.view.frame = CGRectMake(0.0, 80.0, self.view.frame.size.width, 250);
+    } completion:^(BOOL finished) {
+        sleep(2.0);
+        [UIView animateWithDuration:.3 animations:^{
+            self.popVC.view.frame = CGRectMake(0.0, self.view.frame.size.height, self.view.frame.size.width, 250);
+        }];
+        
+    }];
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 15;
