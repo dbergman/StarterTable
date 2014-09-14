@@ -197,6 +197,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Dustin Bergman";
 				TargetAttributes = {
+					C9B77FD11999AA76001724A5 = {
+						DevelopmentTeam = J93BBX354J;
+					};
 					C9B77FF21999AA76001724A5 = {
 						TestTargetID = C9B77FD11999AA76001724A5;
 					};
@@ -365,10 +368,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TableStarter/TableStarter-Prefix.pch";
 				INFOPLIST_FILE = "TableStarter/TableStarter-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -378,10 +384,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TableStarter/TableStarter-Prefix.pch";
 				INFOPLIST_FILE = "TableStarter/TableStarter-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -445,6 +454,7 @@
 				C9B780061999AA76001724A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9B780071999AA76001724A5 /* Build configuration list for PBXNativeTarget "TableStarterTests" */ = {
 			isa = XCConfigurationList;
@@ -453,6 +463,7 @@
 				C9B780091999AA76001724A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
